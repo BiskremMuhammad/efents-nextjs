@@ -12,6 +12,8 @@ export const schema = gql`
     id: String!
     title: String!
     description: String
+    createdAt: String!
+    user: String!
   }
   type Query {
     getEvents: [Event]!
