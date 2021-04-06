@@ -1,6 +1,6 @@
-import { gql } from "apollo-server";
+import { gql } from "apollo-server-micro";
 
-const schema = gql`
+export const schema = gql`
   type User {
     id: String!
     username: String!
@@ -13,9 +13,7 @@ const schema = gql`
     title: String!
     description: String
   }
-  Query {
+  type Query {
     getEvents: [Event]!
   }
 `;
-
-module.exports = schema;
