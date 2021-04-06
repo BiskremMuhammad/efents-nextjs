@@ -13,12 +13,31 @@ const server = new ApolloServer({
 
 const main = async () => {
   try {
-    await mongo.connect(CONSTANTS.DATABASE_URL, { useUnifiedTopology: true, useNewUrlParser: true });
-    console.log("connected to the database..");
+    await connectToDB();
   } catch (err) {
     console.log("Can not connect to the database.");
   }
 };
+
+async function connectToDB() {
+  if (mongo.connection.readyState === 1) {
+    console.log("already connected");
+    return;
+  }
+  mongo.connect(
+    CONSTANTS.DATABASE_URL,
+    {
+      useCreateIndex: true,
+      useFindAndModify: false,
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    },
+    (err) => {
+      if (err) throw err;
+      console.log("DB connected");
+    },
+  );
+}
 
 export const config = {
   api: {

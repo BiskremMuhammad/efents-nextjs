@@ -1,4 +1,4 @@
-import { Schema, model } from "mongoose";
+import { Schema, model, models, Document } from "mongoose";
 
 const eventSchema = new Schema(
   {
@@ -12,4 +12,18 @@ const eventSchema = new Schema(
   { timestamps: true }
 );
 
-export const eventModal = model("Event", eventSchema);
+/**
+ * interface that defines the event mongo atlas document
+ * 
+ * @interface
+ * @exports
+ * @extends Document
+ */
+export interface EventCursor extends Document {
+  title: string;
+  description: string;
+  user: string;
+  createdAt: string;
+}
+
+export const eventModal = models.Event || model("Event", eventSchema);
