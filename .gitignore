@@ -6,7 +6,7 @@
 .pnp.js
 
 # my connection constants
-pages/api/api-constants.ts
+/pages/api/api-constants.ts
 
 # testing
 /coverage
