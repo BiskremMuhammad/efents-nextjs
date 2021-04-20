@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
+
+$efents-color: #f60000;
+$text-color: #1b1b1b;
+$light-color: #fff;
+$dark-color: #1b1b1b;
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  color: $text-color;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.efents-logo, .efents-style {
+  font-family: 'Courgette', sans-serif;
+  color: $text-color;
+  font-size: 36px;
+
+  &.efents-logo {
+    color: $light-color;
+  }
+
+  span.accent {
+    color: $efents-color;
+  }
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  max-width: 90%;
+  margin: 0 auto;
+  border-bottom: 3px solid $efents-color;
+  padding: 13px 0;
+
+  ul {
+    margin-left: 10%;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    list-style: none;
+
+    li {
+      padding-top: 13px;
+      padding-bottom: 10px;
+      border-bottom: 3px solid transparent;
+      cursor: pointer;
+      transition: all 0.3s;
+
+      a, a:visited {
+        text-transform: uppercase;
+        font-size: 15px;
+        font-weight: bold;
+        color: $text-color;
+        padding: 0 18px;
+        transition: all 0.3s;
+      }
+
+      &:hover {
+        border-color: $efents-color;
+
+        a, a:visited {
+          color: $efents-color;
+        }
+      }
+    }
+  }
+
+  .user-area {
+    span {
+      width: 57px;
+      height: 57px;
+      border: 1px solid $dark-color;
+      border-radius: 50%;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: bold;
+      text-transform: uppercase;
+      transition: all 0.3s;
+
+      &:hover {
+        color: $efents-color;
+        border-color: $efents-color;
+      }
+    }
+  }
+}
