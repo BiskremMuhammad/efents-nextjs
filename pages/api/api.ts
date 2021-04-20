@@ -1,14 +1,19 @@
+import dotenv from "dotenv";
 import { ApolloServer } from "apollo-server-micro";
 import mongo from "mongoose";
 
 import { schema } from "./graphql/schema";
 import resolvers from "./graphql/resolvers/resolvers";
-import { CONSTANTS } from "./api-constants";
-import { NextApiRequest, NextApiResponse } from "next";
 
 const server = new ApolloServer({
   typeDefs: schema,
   resolvers,
+});
+
+dotenv.config({
+  path: `${__dirname}/.env${
+    process.env.NODE_ENV ? "." + process.env.NODE_ENV : ""
+  }`,
 });
 
 const main = async () => {
@@ -24,8 +29,9 @@ async function connectToDB() {
     console.log("already connected");
     return;
   }
+  const DB_CONNECTION: string = process.env.MONGOATLAS_DB_CONNECTION || "";
   mongo.connect(
-    CONSTANTS.DATABASE_URL,
+    DB_CONNECTION,
     {
       useCreateIndex: true,
       useFindAndModify: false,
@@ -35,7 +41,7 @@ async function connectToDB() {
     (err) => {
       if (err) throw err;
       console.log("DB connected");
-    },
+    }
   );
 }
 
