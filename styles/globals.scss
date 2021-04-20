@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Courgette&display=swap");
 
 $efents-color: #f60000;
 $text-color: #1b1b1b;
@@ -23,13 +23,14 @@ a {
   box-sizing: border-box;
 }
 
-.efents-logo, .efents-style {
-  font-family: 'Courgette', sans-serif;
+.efents-logo,
+.efents-style {
+  font-family: "Courgette", sans-serif;
   color: $text-color;
   font-size: 36px;
 
   &.efents-logo {
-    color: $light-color;
+    color: $dark-color;
   }
 
   span.accent {
@@ -60,7 +61,8 @@ nav {
       cursor: pointer;
       transition: all 0.3s;
 
-      a, a:visited {
+      a,
+      a:visited {
         text-transform: uppercase;
         font-size: 15px;
         font-weight: bold;
@@ -72,7 +74,8 @@ nav {
       &:hover {
         border-color: $efents-color;
 
-        a, a:visited {
+        a,
+        a:visited {
           color: $efents-color;
         }
       }
