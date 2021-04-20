@@ -39,24 +39,27 @@ a {
 }
 
 nav {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  max-width: 90%;
-  margin: 0 auto;
   border-bottom: 3px solid $efents-color;
-  padding: 13px 0;
+
+  .navbar-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    max-width: 90%;
+    margin: 0 auto;
+  }
 
   ul {
-    margin-left: 10%;
+    margin: 0;
+    margin-left: 7%;
     flex: 1;
     display: flex;
-    align-items: center;
     list-style: none;
+    align-self: stretch;
 
     li {
-      padding-top: 13px;
-      padding-bottom: 10px;
+      padding-top: 26px;
+      padding-bottom: 23px;
       border-bottom: 3px solid transparent;
       cursor: pointer;
       transition: all 0.3s;
@@ -84,8 +87,8 @@ nav {
 
   .user-area {
     span {
-      width: 57px;
-      height: 57px;
+      width: 48px;
+      height: 48px;
       border: 1px solid $dark-color;
       border-radius: 50%;
       text-align: center;
@@ -93,7 +96,7 @@ nav {
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: bold;
       text-transform: uppercase;
       transition: all 0.3s;
