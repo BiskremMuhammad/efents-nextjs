@@ -9,6 +9,11 @@ export const schema = gql`
     ARABIC
     ENGLISH
   }
+  enum EventStatus {
+    PENDING
+    PUBLISHED
+    TRASH
+  }
   type Privacy {
     enableFollow: Boolean
     enableSchedule: Boolean
@@ -18,8 +23,27 @@ export const schema = gql`
     twitter: String
     website: String
   }
+  type Speaker {
+    id: ID!
+    name: String!
+    url: String
+    photo: string
+    event: String!
+  }
+  type Photo {
+    id: ID!
+    photo: String!
+    event: String!
+  }
+  type Comment {
+    id: ID!
+    body: String!
+    user: String!
+    event: String!
+    parent: String
+  }
   type User {
-    id: String!
+    id: ID!
     username: String!
     email: String!
     firstName: String!
@@ -36,12 +60,26 @@ export const schema = gql`
     privacy: Privacy
   }
   type Event {
-    id: String!
+    id: ID!
     title: String!
     description: String
-    hasTranslation: String
+    hasArabic: String!
+    arabicTitle: String
+    arabicDescription: String
+    location: String!
+    poster: String!
+    startTime: String!
+    endTime: String!
+    startDate: String!
+    endDate: String!
+    category: String!
+    speakers: [Speaker]!
+    photos: [Photo]!
     createdAt: String!
     user: String!
+    going: [String]!
+    comments: [Comment]!
+    status: EventStatus!
   }
   type Query {
     getEvents: [Event]!
