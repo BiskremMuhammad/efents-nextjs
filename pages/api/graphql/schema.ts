@@ -27,7 +27,7 @@ export const schema = gql`
     id: ID!
     name: String!
     url: String
-    photo: string
+    photo: String
     event: String!
   }
   type Photo {
