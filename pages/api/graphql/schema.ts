@@ -81,7 +81,12 @@ export const schema = gql`
     comments: [Comment]!
     status: EventStatus!
   }
+  type GetEventsResponse {
+    count: number!
+    events: [Event]!
+    hasNext: Boolean!
+  }
   type Query {
-    getEvents: [Event]!
+    getEvents($after: String, $before: String): GetEventsResponse
   }
 `;
