@@ -83,6 +83,7 @@ export const schema = gql`
   }
   type GetEventsResponse {
     count: number!
+    cursor: String!
     events: [Event]!
     hasNext: Boolean!
   }
