@@ -88,6 +88,6 @@ export const schema = gql`
     hasNext: Boolean!
   }
   type Query {
-    getEvents($after: String, $before: String): LaunchConnection
+    getEvents(after: String, size: Int): LaunchConnection
   }
 `;
