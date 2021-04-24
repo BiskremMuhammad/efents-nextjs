@@ -4,10 +4,12 @@ import mongo from "mongoose";
 
 import { schema } from "./graphql/schema";
 import resolvers from "./graphql/resolvers/resolvers";
+import { NetWorkContext } from "./graphql/resolvers/network-context";
 
 const server = new ApolloServer({
   typeDefs: schema,
   resolvers,
+  context: ({ req, res }): NetWorkContext => ({ req, res }),
 });
 
 dotenv.config({

@@ -41,6 +41,7 @@ export const schema = gql`
     user: String!
     event: String!
     parent: String
+    timestamp: String!
   }
   type User {
     id: ID!
@@ -93,7 +94,7 @@ export const schema = gql`
     firstName: String!
     lastname: String
     email: String!
-    password: string!
+    password: String!
     gender: Gender!
   }
   type Query {
