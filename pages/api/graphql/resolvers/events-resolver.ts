@@ -1,5 +1,5 @@
 import { eventModal as EventModel, EventCursor } from "../../models/event";
-import { Efent } from "../../../../shared/types/event-type";
+import { Efent, EventCollection } from "../../../../shared/types/event-type";
 import { paginateResults } from "../../utils/utils";
 
 /**
@@ -28,7 +28,7 @@ export const eventsResolver = {
     getEvents: async (
       _,
       { after, size }: getEventsQueryArgs
-    ): Promise<Efent[]> => {
+    ): Promise<EventCollection> => {
       try {
         let eventsCursors = await EventModel.find();
 
@@ -37,17 +37,28 @@ export const eventsResolver = {
           results: eventsCursors,
         }) as EventCursor[];
 
-        return eventPage.map(
-          (e: EventCursor): Efent => {
-            return {
-              id: e._id,
-              title: e.title,
-              description: e.description,
-              user: e.user,
-              createdAt: e.createdAt,
-            };
-          }
-        );
+        return {
+          all: eventsCursors.length,
+          count: eventPage.length,
+          cursor: eventPage.length ? eventPage[eventPage.length - 1]._id : null,
+          events: eventPage.map(
+            (e: EventCursor): Efent => {
+              return {
+                id: e._id,
+                title: e.title,
+                description: e.description,
+                user: e.user,
+                createdAt: e.createdAt,
+              };
+            }
+          ),
+          // if the cursor at the end of the paginated results is the same as the
+          // last item in _all_ results, then there are no more results after this
+          hasNext: eventPage.length
+            ? eventPage[eventPage.length - 1]._id !==
+              eventsCursors[eventsCursors.length - 1]._id
+            : false,
+        };
       } catch (err) {
         throw new Error(err);
       }

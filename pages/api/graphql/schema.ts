@@ -81,13 +81,14 @@ export const schema = gql`
     comments: [Comment]!
     status: EventStatus!
   }
-  type LaunchConnection {
+  type EventCollection {
+    all: Int!
     count: Int!
     cursor: String!
     events: [Event]!
     hasNext: Boolean!
   }
   type Query {
-    getEvents(after: String, size: Int): LaunchConnection
+    getEvents(after: String, size: Int): EventCollection
   }
 `;
