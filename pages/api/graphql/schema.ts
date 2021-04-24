@@ -82,7 +82,7 @@ export const schema = gql`
     status: EventStatus!
   }
   type LaunchConnection {
-    count: number!
+    count: Int!
     cursor: String!
     events: [Event]!
     hasNext: Boolean!
