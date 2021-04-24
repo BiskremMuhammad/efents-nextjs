@@ -1,5 +1,5 @@
-import { Efent } from "../../../shared/types/event-type";
-import { User } from "../../../shared/types/user-type";
+import { EventCursor } from "../models/event";
+import { UserCursor } from "../models/users";
 
 /**
  * interface that defines the props sent to pagination function utility
@@ -9,25 +9,27 @@ import { User } from "../../../shared/types/user-type";
  */
 export interface PaginationProps {
   after: string;
-  results: Array<User | Efent>;
-  pageSize: number;
+  results: Array<EventCursor | UserCursor>;
+  pageSize?: number;
 }
 
 /**
  * a utility function that paginate a list of Users or Events
  *
  * @param {PaginationProps} paginationProps
- * @returns {Array<User | Efent>} the paginated array
+ * @returns {Array<EventCursor | UserCursor>} the paginated array
  */
 export const paginateResults = ({
   after: cursor,
   pageSize = 20,
   results,
-}: PaginationProps): Array<User | Efent> => {
+}: PaginationProps): Array<EventCursor | UserCursor> => {
   if (pageSize < 1) return [];
 
   if (!cursor) return results.slice(0, pageSize);
-  const cursorIndex: number = results.findIndex((item) => cursor === item.id);
+  const cursorIndex: number = results.findIndex(
+    (item: EventCursor | UserCursor): boolean => cursor === item._id
+  );
 
   return cursorIndex >= 0
     ? cursorIndex === results.length - 1 // don't let us overflow
