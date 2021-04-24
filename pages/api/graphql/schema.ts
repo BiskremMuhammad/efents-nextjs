@@ -88,7 +88,19 @@ export const schema = gql`
     events: [Event]!
     hasNext: Boolean!
   }
+  input RegisterInput {
+    username: String!
+    firstName: String!
+    lastname: String
+    email: String!
+    password: string!
+    gender: Gender!
+  }
   type Query {
     getEvents(after: String, size: Int): EventCollection
+  }
+  type Mutation {
+    login(user: String!, password: String!): User!
+    register(input: RegisterInput!): User!
   }
 `;
