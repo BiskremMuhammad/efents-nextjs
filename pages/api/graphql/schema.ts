@@ -1,3 +1,9 @@
+/**
+ * @author Muhammad Omran
+ * @date 06-04-2021
+ * @description defines the GraphQL Schema
+ */
+
 import { gql } from "apollo-server-micro";
 
 export const schema = gql`

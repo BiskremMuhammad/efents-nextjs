@@ -1,3 +1,9 @@
+/**
+ * @author Muhammad Omran
+ * @date 20-04-2021
+ * @description implement the Page layout Structure
+ */
+
 import React from "react";
 import Head from "next/head";
 

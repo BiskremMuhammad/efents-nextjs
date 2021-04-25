@@ -1,4 +1,10 @@
 /**
+ * @author Muhammad Omran
+ * @date 21-04-2021
+ * @description defines the event typescript type
+ */
+
+/**
  * defines the Event type
  *
  * @interface

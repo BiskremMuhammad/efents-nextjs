@@ -1,3 +1,9 @@
+/**
+ * @author Muhammad Omran
+ * @date 24-04-2021
+ * @description defines my server network context type definition
+ */
+
 import { NextApiResponse, NextApiRequest } from "next";
 
 /**

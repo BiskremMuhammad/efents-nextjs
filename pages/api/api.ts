@@ -1,3 +1,9 @@
+/**
+ * @author Muhammad Omran
+ * @date 06-04-2021
+ * @description Server Project Start Point
+ */
+
 import dotenv from "dotenv";
 import { ApolloServer } from "apollo-server-micro";
 import mongo from "mongoose";

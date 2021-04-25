@@ -1,3 +1,9 @@
+/**
+ * @author Muhammad Omran
+ * @date 21-04-2021
+ * @description implement the Modal Header Component
+ */
+
 import React from "react";
 
 /**

@@ -1,3 +1,9 @@
+/**
+ * @author Muhammad Omran
+ * @date 06-04-2021
+ * @description Home Page
+ */
+
 import Head from "next/head";
 
 export default function Home() {

@@ -1,3 +1,9 @@
+/**
+ * @author Muhammad Omran
+ * @date 24-04-2021
+ * @description defines some utility functions
+ */
+
 import { EventCursor } from "../models/event";
 import { UserCursor } from "../models/users";
 

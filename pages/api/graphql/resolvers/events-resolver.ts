@@ -1,3 +1,9 @@
+/**
+ * @author Muhammad Omran
+ * @date 06-04-2021
+ * @description implement Event related Resolvers
+ */
+
 import { eventModal as EventModel, EventCursor } from "../../models/event";
 import { Efent, EventCollection } from "../../../../shared/types/event-type";
 import { paginateResults } from "../../utils/utils";

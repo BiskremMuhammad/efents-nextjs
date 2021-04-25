@@ -1,3 +1,9 @@
+/**
+ * @author Muhammad Omran
+ * @date 20-04-2021
+ * @description implement the navebar component
+ */
+
 import React from "react";
 import { EfentsLogo } from "./efents-logo";
 

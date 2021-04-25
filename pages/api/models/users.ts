@@ -1,3 +1,9 @@
+/**
+ * @author Muhammad Omran
+ * @date 06-04-2021
+ * @description defines databse user model
+ */
+
 import { Schema, model, models, Document } from "mongoose";
 import { Gender, Language, SocialLinks } from "../graphql/schema.types";
 
