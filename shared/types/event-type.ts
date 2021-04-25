@@ -4,6 +4,12 @@
  * @description defines the event typescript type
  */
 
+import {
+  Speaker,
+  EventStatus,
+  Comment,
+} from "../../pages/api/graphql/schema.types";
+
 /**
  * defines the Event type
  *
@@ -19,28 +25,140 @@ export interface Efent {
   id: string;
 
   /**
-   * the title of the event
+   * event Category
+   *
+   * @type {string}
+   */
+  category: string;
+
+  /**
+   * event Title
    *
    * @type {string}
    */
   title: string;
 
   /**
-   * the description of the event
+   * event Description
    *
    * @type {string}
    */
   description: string;
 
   /**
-   * the id of the user who created the event
+   * flag if the event has a translation to arabic
+   *
+   * @type {string}
+   */
+  hasArabic: boolean;
+
+  /**
+   * the arabic title if the event has a translation
+   *
+   * @type {string}
+   */
+  arabicTitle?: string;
+
+  /**
+   * event description in arabic
+   *
+   * @type {string}
+   */
+  arabicDescription?: string;
+
+  /**
+   * event location
+   *
+   * @type {string}
+   */
+  location: string;
+
+  /**
+   * the city where the event takes place
+   *
+   * @type {string}
+   */
+  city: string;
+
+  /**
+   * event poster url
+   *
+   * @type {string}
+   */
+  poster: string;
+
+  /**
+   * event start time
+   *
+   * @type {string}
+   */
+  startTime: string;
+
+  /**
+   * event end time
+   *
+   * @type {string}
+   */
+  endTime: string;
+
+  /**
+   * event starting date
+   *
+   * @type {string}
+   */
+  startDate: string;
+
+  /**
+   * event ending date
+   *
+   * @type {string}
+   */
+  endDate: string;
+
+  /**
+   * evnet Speakers
+   *
+   * @type {Speaker[]}
+   */
+  speakers: Speaker[];
+
+  /**
+   * event photos
+   *
+   * @type {string[]}
+   */
+  photos: string[];
+
+  /**
+   * event published status
+   *
+   * @type {EventStatus}
+   */
+  status: EventStatus;
+
+  /**
+   * event host id
    *
    * @type {string}
    */
   user: string;
 
   /**
-   * the datetime of the event creation
+   * event array of comments
+   *
+   * @type {Comment[]}
+   */
+  comments: Comment[];
+
+  /**
+   * array of users ids who are going to the event
+   *
+   * @type {string[]}
+   */
+  going: string[];
+
+  /**
+   * event creation time
    *
    * @type {string}
    */

@@ -27,6 +27,18 @@ export enum Language {
 }
 
 /**
+ * enum that defines the status of an event
+ *
+ * @enum
+ * @exports
+ */
+export enum EventStatus {
+  PENDING = "PENDING",
+  PUBLISHED = "PUBLISHED",
+  TRASH = "TRASH",
+}
+
+/**
  * enum that defines the privacy settings
  *
  * @enum
@@ -135,25 +147,11 @@ export interface RegisterInput {
  */
 export interface Speaker {
   /**
-   * the id of the event
-   *
-   * @type {string}
-   */
-  event: string;
-
-  /**
    * speaker name
    *
    * @type {string}
    */
   name: string;
-
-  /**
-   * speaker id
-   *
-   * @type {string}
-   */
-  id: string;
 
   /**
    * speaker photo url
@@ -168,35 +166,6 @@ export interface Speaker {
    * @type {string}
    */
   url: string;
-}
-
-/**
- * interface that defines an event photo
- *
- * @interface
- * @exports
- */
-export interface Photo {
-  /**
-   * the id of the event
-   *
-   * @type {string}
-   */
-  event: string;
-
-  /**
-   * the id of the photo
-   *
-   * @type {string}
-   */
-  id: string;
-
-  /**
-   * photo url
-   *
-   * @type {string}
-   */
-  photo: string;
 }
 
 /**
