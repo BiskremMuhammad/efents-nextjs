@@ -70,7 +70,7 @@ export const schema = gql`
     id: ID!
     title: String!
     description: String
-    hasArabic: String!
+    hasArabic: Boolean!
     arabicTitle: String
     arabicDescription: String
     location: String!
