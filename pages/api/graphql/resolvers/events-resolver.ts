@@ -6,7 +6,7 @@
 
 import { eventModal as EventModel, EventCursor } from "../../models/event";
 import { Efent, EventCollection } from "../../../../shared/types/event-type";
-import { paginateResults } from "../../utils/utils";
+import { paginateResults } from "../../utils/paginate-utility";
 
 /**
  * interface that defines the getEvents Query args
