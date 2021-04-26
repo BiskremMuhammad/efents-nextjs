@@ -19,3 +19,22 @@ export const validateEmail = (val: string): boolean => {
 
   return !!val.trim().match(mailformat);
 };
+
+/**
+ * to validate a password input
+ *
+ * @param {string} val the password
+ * @returns {boolean} the validation result
+ */
+export const validatePassword = (val: string): boolean => {
+  if (val.length < 6) {
+    return false;
+  }
+
+  // validate passowrd must contain characters and numbers
+  if (!val.match(/[a-z0-9]+/gi)) {
+    return false;
+  }
+
+  return true;
+};
