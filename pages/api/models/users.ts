@@ -119,4 +119,4 @@ export interface UserCursor extends Document {
   createdAt: string;
 }
 
-export const userModel = models.User || model("User", userSchema);
+export const userModel = models.User || model<UserCursor>("User", userSchema);

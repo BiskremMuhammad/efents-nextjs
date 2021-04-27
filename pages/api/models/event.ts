@@ -166,31 +166,8 @@ export interface EventCursor extends Document {
   createdAt: string;
 }
 
-export const eventModal = models.Event || model("Event", eventSchema);
-
-export const commentsTable =
-  models.Comment ||
-  model(
-    "Comment",
-    new Schema(
-      {
-        body: String,
-        parent: {
-          type: Schema.Types.ObjectId,
-          ref: "comments",
-        },
-        userId: {
-          type: Schema.Types.ObjectId,
-          ref: "users",
-        },
-        event: {
-          type: Schema.Types.ObjectId,
-          ref: "events",
-        },
-      },
-      { timestamps: true }
-    )
-  );
+export const eventModal =
+  models.Event || model<EventCursor>("Event", eventSchema);
 
 /**
  * interface that defines the comment cursor
@@ -235,3 +212,27 @@ export interface CommentCursor extends Document {
    */
   createdAt: string;
 }
+
+export const commentsTable =
+  models.Comment ||
+  model<CommentCursor>(
+    "Comment",
+    new Schema(
+      {
+        body: String,
+        parent: {
+          type: Schema.Types.ObjectId,
+          ref: "comments",
+        },
+        userId: {
+          type: Schema.Types.ObjectId,
+          ref: "users",
+        },
+        event: {
+          type: Schema.Types.ObjectId,
+          ref: "events",
+        },
+      },
+      { timestamps: true }
+    )
+  );
