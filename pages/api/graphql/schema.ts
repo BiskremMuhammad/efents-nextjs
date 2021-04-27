@@ -20,6 +20,12 @@ export const schema = gql`
     PUBLISHED
     TRASH
   }
+  enum UserRole {
+    USER
+    EDITOR
+    ADMIN
+    SUPER_ADMIN
+  }
   type Privacy {
     enableFollow: Boolean
     enableSchedule: Boolean
@@ -64,7 +70,8 @@ export const schema = gql`
     events: [String]!
     schedule: [String]!
     language: Language!
-    privacy: Privacy
+    privacy: Privacy!
+    role: UserRole!
   }
   type Event {
     id: ID!

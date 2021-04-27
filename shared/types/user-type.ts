@@ -8,6 +8,7 @@ import {
   Language,
   Privacy,
   SocialLinks,
+  UserRole,
 } from "../../pages/api/graphql/schema.types";
 
 /**
@@ -102,11 +103,18 @@ export interface User {
   privacy: Privacy;
 
   /**
+   * user priviliages
+   *
+   * @type {UserRole}
+   */
+  role: UserRole;
+
+  /**
    * user list of his schedule events ids
    *
    * @type {string[]}
    */
-  schedule: [string];
+  schedule: string[];
 
   /**
    * user social links

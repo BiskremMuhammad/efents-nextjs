@@ -5,7 +5,12 @@
  */
 
 import { Schema, model, models, Document, Model } from "mongoose";
-import { Gender, Language, SocialLinks } from "../graphql/schema.types";
+import {
+  Gender,
+  Language,
+  SocialLinks,
+  UserRole,
+} from "../graphql/schema.types";
 
 const userSchema = new Schema(
   {
@@ -91,11 +96,11 @@ export interface UserCursor extends Document {
   };
 
   /**
-   * user list of his schedule events ids
+   * user priviliages
    *
-   * @type {string[]}
+   * @type {UserRole}
    */
-  schedule: [string];
+  role: UserRole;
 
   /**
    * user social links

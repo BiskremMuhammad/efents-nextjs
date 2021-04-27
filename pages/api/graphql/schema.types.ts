@@ -39,6 +39,19 @@ export enum EventStatus {
 }
 
 /**
+ * enum that defines the user roles
+ *
+ * @enum
+ * @exports
+ */
+export enum UserRole {
+  USER,
+  EDITOR,
+  ADMIN,
+  SUPER_ADMIN,
+}
+
+/**
  * enum that defines the privacy settings
  *
  * @enum
@@ -122,7 +135,7 @@ export interface RegisterInput {
    *
    * @type {string}
    */
-  lastname: string;
+  lastName: string;
 
   /**
    * user password
