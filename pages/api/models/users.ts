@@ -4,7 +4,7 @@
  * @description defines databse user model
  */
 
-import { Schema, model, models, Document } from "mongoose";
+import { Schema, model, models, Document, Model } from "mongoose";
 import { Gender, Language, SocialLinks } from "../graphql/schema.types";
 
 const userSchema = new Schema(
@@ -119,4 +119,5 @@ export interface UserCursor extends Document {
   createdAt: string;
 }
 
-export const userModel = models.User || model<UserCursor>("User", userSchema);
+export const userModel: Model<UserCursor> =
+  models.User || model<UserCursor>("User", userSchema);

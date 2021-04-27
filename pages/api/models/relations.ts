@@ -4,7 +4,7 @@
  * @description implments database relations models
  */
 
-import { Schema, model, models, Document } from "mongoose";
+import { Schema, model, models, Document, Model } from "mongoose";
 
 /**
  * interface that defines the Follow Cursor
@@ -34,7 +34,7 @@ export interface FollowCursor extends Document {
  * which userId: the user is the subject >> who made the action
  * and follows: is the Object >> which affected by the action
  */
-export const followTable =
+export const followTable: Model<FollowCursor> =
   models.Follow ||
   model<FollowCursor>(
     "Follow",
@@ -81,7 +81,7 @@ export interface EventGoingCursor extends Document {
  * which userId: the user is the subject >> who made the action
  * and event: is the Object >> which users are going to
  */
-export const goingTable =
+export const goingTable: Model<EventGoingCursor> =
   models.Going ||
   model<EventGoingCursor>(
     "Going",

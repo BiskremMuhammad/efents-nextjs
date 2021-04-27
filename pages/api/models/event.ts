@@ -4,7 +4,7 @@
  * @description defines databse event model
  */
 
-import { Schema, model, models, Document } from "mongoose";
+import { Schema, model, models, Document, Model } from "mongoose";
 import { EventStatus, Speaker } from "../graphql/schema.types";
 
 const eventSchema = new Schema(
@@ -166,7 +166,7 @@ export interface EventCursor extends Document {
   createdAt: string;
 }
 
-export const eventModal =
+export const eventModal: Model<EventCursor> =
   models.Event || model<EventCursor>("Event", eventSchema);
 
 /**
@@ -213,7 +213,7 @@ export interface CommentCursor extends Document {
   createdAt: string;
 }
 
-export const commentsTable =
+export const commentsTable: Model<CommentCursor> =
   models.Comment ||
   model<CommentCursor>(
     "Comment",
