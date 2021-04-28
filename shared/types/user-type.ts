@@ -10,6 +10,7 @@ import {
   SocialLinks,
   UserRole,
 } from "../../pages/api/graphql/schema.types";
+import { Efent } from "./event-type";
 
 /**
  * interfeace that defines the User object
@@ -35,9 +36,9 @@ export interface User {
   /**
    * user list of events ids
    *
-   * @type {string[]}
+   * @type {Efent[]}
    */
-  events: string[];
+  events?: Efent[];
 
   /**
    * the email of the user
@@ -56,16 +57,16 @@ export interface User {
   /**
    * user list of followers ids
    *
-   * @type {string[]}
+   * @type {User[]}
    */
-  followers: string[];
+  followers?: User[];
 
   /**
    * user list of followings ids
    *
-   * @type {string[]}
+   * @type {User[]}
    */
-  followings: string[];
+  followings?: User[];
 
   /**
    * user gender
@@ -112,9 +113,9 @@ export interface User {
   /**
    * user list of his schedule events ids
    *
-   * @type {string[]}
+   * @type {Efent[]}
    */
-  schedule: string[];
+  schedule?: Efent[];
 
   /**
    * user social links

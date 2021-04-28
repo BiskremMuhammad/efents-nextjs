@@ -9,6 +9,7 @@ import {
   EventStatus,
   Comment,
 } from "../../pages/api/graphql/schema.types";
+import { User } from "./user-type";
 
 /**
  * defines the Event type
@@ -120,14 +121,14 @@ export interface Efent {
    *
    * @type {Speaker[]}
    */
-  speakers: Speaker[];
+  speakers?: Speaker[];
 
   /**
    * event photos
    *
    * @type {string[]}
    */
-  photos: string[];
+  photos?: string[];
 
   /**
    * event published status
@@ -137,25 +138,25 @@ export interface Efent {
   status: EventStatus;
 
   /**
-   * event host id
+   * event host
    *
-   * @type {string}
+   * @type {User}
    */
-  user: string;
+  host: User;
 
   /**
    * event array of comments
    *
    * @type {Comment[]}
    */
-  comments: Comment[];
+  comments?: Comment[];
 
   /**
    * array of users ids who are going to the event
    *
-   * @type {string[]}
+   * @type {User[]}
    */
-  going: string[];
+  going?: User[];
 
   /**
    * event creation time
