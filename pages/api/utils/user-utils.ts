@@ -4,9 +4,17 @@
  * @description implement some user related utility functions
  */
 
+import { Efent } from "../../../shared/types/event-type";
 import { User } from "../../../shared/types/user-type";
 import { EventCursor, eventModal } from "../models/event";
-import { UserCursor } from "../models/users";
+import {
+  EventGoingCursor,
+  FollowCursor,
+  followTable,
+  goingTable,
+} from "../models/relations";
+import { UserCursor, userModel } from "../models/users";
+import { mapCursorToEvent } from "./event-utils";
 import { paginateResults } from "./paginate-utility";
 
 /**
@@ -47,7 +55,62 @@ export const mapCursorToUser = async (
     const userEvents: EventCursor[] = paginateResults({
       results: await eventModal.find({ user: cursor._id }),
     }) as EventCursor[];
-    // user.events =
+    const userCreatedEvents: Efent[] = [];
+    userEvents.map(async (e: EventCursor) =>
+      userCreatedEvents.push(await mapCursorToEvent(e))
+    );
+    user.events = [...userCreatedEvents];
+
+    // get followers
+    const followersCursors: FollowCursor[] = await followTable.find({
+      follow: user.id,
+    });
+    const followersIds: string[] = followersCursors.map(
+      (f: FollowCursor): string => f._id
+    );
+    const followersList: UserCursor[] = await userModel.find({
+      _id: { $in: [...followersIds] },
+    });
+
+    const followers: User[] = [];
+    followersList.map(async (u: UserCursor) => {
+      followers.push(await mapCursorToUser(u));
+    });
+    user.followers = [...followers];
+
+    // get followings
+    const followingsCursors: FollowCursor[] = await followTable.find({
+      userId: user.id,
+    });
+    const followingsIds: string[] = followingsCursors.map(
+      (f: FollowCursor): string => f._id
+    );
+    const followingsList: UserCursor[] = await userModel.find({
+      _id: { $in: [...followingsIds] },
+    });
+
+    const followings: User[] = [];
+    followingsList.map(async (u: UserCursor) => {
+      followings.push(await mapCursorToUser(u));
+    });
+    user.followings = [...followings];
+
+    // get user schedule
+    const scheduleCursors: EventGoingCursor[] = await goingTable.find({
+      userId: user.id,
+    });
+    const scheduleEventsIds: string[] = scheduleCursors.map(
+      (c: EventGoingCursor): string => c._id
+    );
+    const scheduleEvents: EventCursor[] = await eventModal.find({
+      _id: { $in: [...scheduleEventsIds] },
+    });
+
+    const schedule: Efent[] = [];
+    scheduleEvents.map(async (e: EventCursor) => {
+      schedule.push(await mapCursorToEvent(e));
+    });
+    user.schedule = [...schedule];
   }
 
   return user;
