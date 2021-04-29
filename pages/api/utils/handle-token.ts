@@ -5,6 +5,7 @@
  */
 
 import jwt from "jsonwebtoken";
+import { CONSTANTS } from "../../../shared/constants";
 import { UserRole } from "../graphql/schema.types";
 
 /**
@@ -44,13 +45,6 @@ export interface JwtPayload {
 }
 
 /**
- * constant to hold the age of the token
- *
- * @type {number}
- */
-const jwtAge: number = 7 * 24 * 60 * 60;
-
-/**
  * getting token secret from the enviroment variable unless > empty which will throw an err
  *
  * @type {string}
@@ -64,7 +58,9 @@ const SECRET: string = process.env.JWT_SECRET || "";
  * @returns {string} the jwt
  */
 export const generateJWT = (data: JwtPayload): string => {
-  return jwt.sign(data, SECRET, { expiresIn: jwtAge });
+  return jwt.sign(data, SECRET, {
+    expiresIn: CONSTANTS.AUTH_TOKEN_AGE_IN_SECONDS,
+  });
 };
 
 /**

@@ -32,7 +32,7 @@ export const validatePassword = (val: string): boolean => {
   }
 
   // validate passowrd must contain characters and numbers
-  if (!val.match(/[a-z0-9]+/gi)) {
+  if (!val.match(/[a-z]+/gi)) {
     return false;
   }
 

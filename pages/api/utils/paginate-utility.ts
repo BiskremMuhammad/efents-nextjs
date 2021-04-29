@@ -14,7 +14,7 @@ import { UserCursor } from "../models/users";
  * @exports
  */
 export interface PaginationProps {
-  after: string;
+  after?: string;
   results: Array<EventCursor | UserCursor>;
   pageSize?: number;
 }
