@@ -19,16 +19,16 @@ import { NetWorkContext } from "../network-context";
 
 export const loginMutationResolver = async (
   _: any,
-  { user, password },
+  { user, password }: { user: string; password: string },
   ctx: NetWorkContext
 ): Promise<User> => {
   try {
     if (!user || !password) {
       throw new AuthenticationError("Please provide all requied fields.");
     }
-    if (!validateAlphaNumericOnlyInput(user)) {
+    if (!user.includes("@") && !validateAlphaNumericOnlyInput(user)) {
       throw new AuthenticationError("username/email is not valid");
-    } else if (!validateEmail(user)) {
+    } else if (user.includes("@") && !validateEmail(user)) {
       throw new AuthenticationError("username/email is not valid");
     }
     if (!validatePassword(password)) {
