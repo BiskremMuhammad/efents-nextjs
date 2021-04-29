@@ -20,7 +20,9 @@ import { NetWorkContext } from "../network-context";
 
 export const registerMutationResolver = async (
   _: any,
-  { username, password, email, firstName, lastName, gender }: RegisterInput,
+  {
+    input: { username, password, email, firstName, lastName, gender },
+  }: { input: RegisterInput },
   ctx: NetWorkContext
 ): Promise<User> => {
   try {
@@ -42,10 +44,10 @@ export const registerMutationResolver = async (
     }
 
     // check if user already exists with same username or email
-    const userTaken: boolean = !!(await userModel.find({
+    const userTaken: UserCursor[] = await userModel.find({
       $or: [{ username }, { email }],
-    }));
-    if (userTaken) {
+    });
+    if (userTaken.length) {
       throw new AuthenticationError("User already exists.");
     }
 

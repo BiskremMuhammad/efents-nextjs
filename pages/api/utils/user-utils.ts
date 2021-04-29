@@ -124,7 +124,7 @@ export const loginUser = async (
   userCursor: UserCursor,
   ctx: NetWorkContext
 ): Promise<User> => {
-  const user = await mapCursorToUser(userCursor);
+  const user = await mapCursorToUser(userCursor, true);
 
   // genereate an auth jwt
   const token: string = generateJWT({
