@@ -5,10 +5,15 @@
  */
 
 import { User } from "../../../../../shared/types/user-type";
-import { NetWorkContext } from "../network-context";
+/**
+ * @author Muhammad Omran
+ * @date 24-04-2021
+ * @description combine all user related resolvers
+ */
+
 import { registerMutationResolver } from "./register-mutation-resolver";
 
-export const eventsResolver = {
+export const userResolvers = {
   Mutation: {
     register: registerMutationResolver,
   },
