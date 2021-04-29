@@ -4,8 +4,11 @@
  * @description implement some user related utility functions
  */
 
+import { serialize } from "cookie";
+import { CONSTANTS } from "../../../shared/constants";
 import { Efent } from "../../../shared/types/event-type";
 import { User } from "../../../shared/types/user-type";
+import { NetWorkContext } from "../graphql/resolvers/network-context";
 import { EventCursor, eventModal } from "../models/event";
 import {
   EventGoingCursor,
@@ -15,6 +18,7 @@ import {
 } from "../models/relations";
 import { UserCursor, userModel } from "../models/users";
 import { mapCursorToEvent } from "./event-utils";
+import { generateJWT } from "./handle-token";
 import { paginateResults } from "./paginate-utility";
 
 /**
@@ -112,6 +116,31 @@ export const mapCursorToUser = async (
     });
     user.schedule = [...schedule];
   }
+
+  return user;
+};
+
+export const loginUser = async (
+  userCursor: UserCursor,
+  ctx: NetWorkContext
+): Promise<User> => {
+  const user = await mapCursorToUser(userCursor);
+
+  // genereate an auth jwt
+  const token: string = generateJWT({
+    id: user.id,
+    email: user.email,
+    role: user.role,
+    username: user.username,
+  });
+
+  // append the token to a cookie
+  ctx.res.setHeader(
+    "Set-Cookie",
+    serialize(CONSTANTS.AUTH_JWT_COOKIE, String(token), {
+      maxAge: CONSTANTS.AUTH_TOKEN_AGE_IN_SECONDS * 1000,
+    })
+  );
 
   return user;
 };

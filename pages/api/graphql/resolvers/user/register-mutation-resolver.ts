@@ -6,12 +6,10 @@
 
 import { AuthenticationError } from "apollo-server-micro";
 import bcrypt from "bcryptjs";
-import Cookies from "cookies";
-import { CONSTANTS } from "../../../../../shared/constants";
+
 import { User } from "../../../../../shared/types/user-type";
 import { UserCursor, userModel } from "../../../models/users";
-import { generateJWT } from "../../../utils/handle-token";
-import { mapCursorToUser } from "../../../utils/user-utils";
+import { loginUser, mapCursorToUser } from "../../../utils/user-utils";
 import {
   validateAlphaNumericOnlyInput,
   validateEmail,
@@ -76,23 +74,7 @@ export const registerMutationResolver = async (
       },
     }).save();
 
-    const user = await mapCursorToUser(userCursor);
-
-    // genereate an auth jwt
-    const token: string = generateJWT({
-      id: user.id,
-      email: user.email,
-      role: user.role,
-      username: user.username,
-    });
-
-    // append the token to a cookie
-    const tokenCookie = new Cookies(ctx.req, ctx.res);
-    tokenCookie.set(CONSTANTS.AUTH_JWT_COOKIE, token, {
-      maxAge: CONSTANTS.AUTH_TOKEN_AGE_IN_SECONDS * 1000,
-    });
-
-    return user;
+    return await loginUser(userCursor, ctx);
   } catch (err) {
     throw new Error(err);
   }
