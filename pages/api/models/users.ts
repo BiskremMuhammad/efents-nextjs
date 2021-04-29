@@ -86,6 +86,13 @@ export interface UserCursor extends Document {
   lastName: string;
 
   /**
+   * user password in the database
+   *
+   * @type {string}
+   */
+  password: string;
+
+  /**
    * user privacy settings
    *
    * @type {{ follow: boolean; schedule: boolean}}

@@ -9,7 +9,7 @@ import bcrypt from "bcryptjs";
 
 import { User } from "../../../../../shared/types/user-type";
 import { UserCursor, userModel } from "../../../models/users";
-import { loginUser, mapCursorToUser } from "../../../utils/user-utils";
+import { loginUser } from "../../../utils/user-utils";
 import {
   validateAlphaNumericOnlyInput,
   validateEmail,
