@@ -15,7 +15,7 @@ export const validateAlphaNumericOnlyInput = (val: string): boolean => {
  * @returns {boolean} the validation result
  */
 export const validateEmail = (val: string): boolean => {
-  var mailformat = /^w+([.-]?w+)*@w+([.-]?w+)*(.w{2,3})+$/gi;
+  var mailformat = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/gi;
 
   return !!val.trim().match(mailformat);
 };
