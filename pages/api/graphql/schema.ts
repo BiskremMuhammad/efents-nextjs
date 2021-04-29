@@ -65,10 +65,10 @@ export const schema = gql`
     gender: Gender!
     avatar: String
     social: SocialLinks
-    followers: [String]!
-    followings: [String]!
-    events: [String]!
-    schedule: [String]!
+    followers: [User]!
+    followings: [User]!
+    events: [Event]!
+    schedule: [Event]!
     language: Language!
     privacy: Privacy!
     role: UserRole!
@@ -90,8 +90,8 @@ export const schema = gql`
     speakers: [Speaker]!
     photos: [Photo]!
     createdAt: String!
-    user: String!
-    going: [String]!
+    user: User!
+    going: [User]!
     comments: [Comment]!
     status: EventStatus!
   }

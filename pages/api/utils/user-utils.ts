@@ -56,9 +56,9 @@ export const mapCursorToUser = async (
    * if all details are required
    */
   if (includeDetails) {
-    const userEvents: EventCursor[] = paginateResults({
-      results: await eventModal.find({ user: cursor._id }),
-    }) as EventCursor[];
+    const userEvents: EventCursor[] = await eventModal.find({
+      user: cursor._id,
+    });
     const userCreatedEvents: Efent[] = [];
     userEvents.map(async (e: EventCursor) =>
       userCreatedEvents.push(await mapCursorToEvent(e))
