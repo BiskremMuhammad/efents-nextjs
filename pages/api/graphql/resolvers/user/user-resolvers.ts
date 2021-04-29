@@ -5,6 +5,7 @@
  */
 
 import { User } from "../../../../../shared/types/user-type";
+import { loginMutationResolver } from "./login-mutation-resolver";
 /**
  * @author Muhammad Omran
  * @date 24-04-2021
@@ -16,5 +17,6 @@ import { registerMutationResolver } from "./register-mutation-resolver";
 export const userResolvers = {
   Mutation: {
     register: registerMutationResolver,
+    login: loginMutationResolver,
   },
 };
