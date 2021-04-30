@@ -139,6 +139,10 @@ export const loginUser = async (
     "Set-Cookie",
     serialize(CONSTANTS.AUTH_JWT_COOKIE, String(token), {
       maxAge: CONSTANTS.AUTH_TOKEN_AGE_IN_SECONDS * 1000,
+      path: "/",
+      secure: process.env.NODE_ENV !== "production" ? false : true,
+      httpOnly: false,
+      sameSite: "strict",
     })
   );
 
