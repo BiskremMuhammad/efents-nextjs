@@ -4,6 +4,7 @@ $efents-color: #f60000;
 $text-color: #1b1b1b;
 $light-color: #fff;
 $dark-color: #1b1b1b;
+$max-width: 1244px;
 
 html,
 body {
@@ -35,7 +36,7 @@ a {
 .efents-style {
   font-family: "Courgette", sans-serif;
   color: $text-color;
-  font-size: 36px;
+  font-size: 2.5rem;
 
   &.efents-logo {
     color: $dark-color;
@@ -48,14 +49,14 @@ a {
 
 nav {
   grid-area: header;
-  border-bottom: 3px solid $efents-color;
+  width: 95%;
+  max-width: $max-width;
+  margin: 0 auto;
 
   .navbar-container {
     display: flex;
     flex-direction: row;
     align-items: center;
-    max-width: 90%;
-    margin: 0 auto;
   }
 
   ul {
@@ -64,31 +65,53 @@ nav {
     flex: 1;
     display: flex;
     list-style: none;
+    align-items: center;
     align-self: stretch;
 
     li {
-      padding-top: 26px;
-      padding-bottom: 23px;
-      border-bottom: 3px solid transparent;
       cursor: pointer;
       transition: all 0.3s;
+      margin-right: 1.5rem;
+
+      &:last-child {
+        margin-right: 0;
+      }
 
       a,
       a:visited {
         text-transform: uppercase;
-        font-size: 15px;
+        font-size: 0.9rem;
         font-weight: bold;
         color: $text-color;
-        padding: 0 18px;
+        padding: 0.75rem 0;
         transition: all 0.3s;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding-top: 1.8rem;
+
+        &::after {
+          display: block;
+          content: "";
+          width: 0;
+          height: 3px;
+          margin-top: 0.4rem;
+          transition: all 0.3s;
+          background: $efents-color;
+          border-radius: 1.5px;
+        }
       }
 
       &:hover {
-        border-color: $efents-color;
-
         a,
         a:visited {
           color: $efents-color;
+
+          &::after {
+            width: 80%;
+          }
         }
       }
     }
@@ -96,15 +119,13 @@ nav {
 
   .user-area {
     span {
-      width: 48px;
-      height: 48px;
       border: 1px solid $dark-color;
-      border-radius: 50%;
       text-align: center;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
+      padding: 3px 11px;
       font-size: 13px;
       font-weight: bold;
       text-transform: uppercase;
