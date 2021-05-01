@@ -23,6 +23,14 @@ a {
   box-sizing: border-box;
 }
 
+.efents-root-container {
+  display: grid;
+  grid-template-areas: "header" "main" "footer";
+  min-height: 100vh;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr auto;
+}
+
 .efents-logo,
 .efents-style {
   font-family: "Courgette", sans-serif;
@@ -39,6 +47,7 @@ a {
 }
 
 nav {
+  grid-area: header;
   border-bottom: 3px solid $efents-color;
 
   .navbar-container {
@@ -107,4 +116,12 @@ nav {
       }
     }
   }
+}
+
+main {
+  grid-area: main;
+}
+
+footer {
+  grid-area: footer;
 }
