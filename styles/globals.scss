@@ -145,4 +145,9 @@ main {
 
 footer {
   grid-area: footer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 128px;
+  color: $text-color;
 }
